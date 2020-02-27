@@ -1,4 +1,14 @@
-# This code is 
+# A domain adaptation approach for performance estimation of spatial predictons
+
+# In this simulation we evaluate 6 performance estimators.
+# The simulated data has a spatial structure. Observed samples included in the training
+# set follow a spatial source distribution, while the test data follow a spatial target
+# distribution which is uniform.
+# The fitted predictor is a linear model.
+# 6 cross-validation estimators for the predictor's error on the target domain are evaluated.
+# 3 estimators consider a naive train-validation data partitioning, while the other 3 
+# cosider a domain adaptation approch, based on importance-weighting. 
+
 
 source("functions.R")
 
@@ -15,6 +25,7 @@ set.seed(103); covs <- make_fixed_layers_covs(Scal = n^2,
                                               noise_matern_scale = 2)
 # generating mean fields from GRFs
 set.seed(103); fixed_layers <- make_fixed_layers(covs = covs, beta_X=c(1, 2, 0.5, -0.5, 0, 0, 0), rmvncores = 16) #15
+
 # simulation parameters
 noiselevel <- 0.2; beta_X=c(1, 2, 0.5, -0.5, 0, 0, 0); Z_level = 2
 
